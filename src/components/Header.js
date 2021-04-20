@@ -9,7 +9,7 @@ text-align: center;
 
 const Header = () => {
   return ( 
-    <Title>gifer</Title>
+    <Title>GIFs that keep on givin'</Title>
    );
 }
  

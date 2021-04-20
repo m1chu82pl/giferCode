@@ -6,7 +6,8 @@ margin: 0 1vw 0;
 `;
 
 const Form = styled.form`
-
+text-align: center;
+margin: 10px;
 `;
 
 const Searcher = (props) => {
@@ -14,7 +15,6 @@ const Searcher = (props) => {
 
   return ( 
     <Wrapper>
-      <p>searcher</p>
       <Form>
         <input type="text" placeholder="what are you looking for?" 
         onChange={props.inputValue}

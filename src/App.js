@@ -24,18 +24,18 @@ function App() {
   const [gifsData, setGifsData] = useState([])
   
 
-  const handleChangeInputValue =(event) => {
-      setTimeout(() => setUrl(`http://api.giphy.com/v1/gifs/search?q=${event.target.value}&api_key=${API}&limit=${limit}`), 500)
-    };  
+  const handleChangeInputValue = (event) => {
+    setUrl(`http://api.giphy.com/v1/gifs/search?q=${event.target.value}&api_key=${API}&limit=${limit}`);
+  };  
   
   
   useEffect(() => {    
-    let fetchData = () => {
+    const fetchData = () => {
       console.log("url is:", url);
   fetch(url)
-      .then((response) => {
-        if (response.ok) {
-          return response;
+  .then((response) => {
+    if (response.ok) {
+      return response;
         }
         throw Error("tu też coś poszło nie tak");
       })
@@ -44,20 +44,26 @@ function App() {
         // console.log(gifs)
         setGifsData(gifs.data)
         // console.log("gifs is:", gifs)
-    })
+      })
       .catch((error) => {
         console.log("errrror", error);
         // this.setState({
-        //   error: true,
-        // });
-      });
-    };
+          //   error: true,
+          // });
+        });
+      };
+      const searchTimer = setTimeout(()=> {
+        fetchData();     
 
-    fetchData();      
-}, [url]);
-        
-console.log("gifsData:", gifsData);
+      }, 1000);
 
+return () => clearTimeout(searchTimer)
+
+    }, [url]);
+    
+    console.log("gifsData:", gifsData);
+    // clearTimeout(searchTimer)
+    
 
 
   return (
