@@ -1,24 +1,72 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState, useEffect} from "react";
+
+import styled from 'styled-components';
+import EventPlace from './components/EventPlace';
+import Footer from './components/Footer';
+import Header from './components/Header';
+import Searcher from './components/Searcher';
+
+const Wrapper = styled.div`
+position: absolute;
+display: flex;
+flex-direction: column;
+width: 100%;
+height: auto;
+background: papayawhip;
+`
 
 function App() {
+
+  const API = "CCVpu71TxLgR0gsdR8aSRHoKyEWXjRNs";
+  
+  const [limit, setLimit] = useState(10);
+  const [url, setUrl] = useState(`http://api.giphy.com/v1/gifs/search?q=&api_key=${API}&limit=${limit}`)
+  const [gifsData, setGifsData] = useState([])
+  
+
+  const handleChangeInputValue =(event) => {
+      setTimeout(() => setUrl(`http://api.giphy.com/v1/gifs/search?q=${event.target.value}&api_key=${API}&limit=${limit}`), 500)
+    };  
+  
+  
+  useEffect(() => {    
+    let fetchData = () => {
+      console.log("url is:", url);
+  fetch(url)
+      .then((response) => {
+        if (response.ok) {
+          return response;
+        }
+        throw Error("tu też coś poszło nie tak");
+      })
+      .then((response) => response.json())
+      .then((gifs) => {
+        // console.log(gifs)
+        setGifsData(gifs.data)
+        // console.log("gifs is:", gifs)
+    })
+      .catch((error) => {
+        console.log("errrror", error);
+        // this.setState({
+        //   error: true,
+        // });
+      });
+    };
+
+    fetchData();      
+}, [url]);
+        
+console.log("gifsData:", gifsData);
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Wrapper>
+      <Header/>
+      <Searcher inputValue={handleChangeInputValue}/>
+      <EventPlace gifsData={gifsData}/>
+      <Footer/>
+    </Wrapper>
   );
 }
 
