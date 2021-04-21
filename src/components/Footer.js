@@ -6,11 +6,10 @@ position: fixed;
 bottom: 0;
 width: 100%;
 text-align: center;
-background: salmon;
 `;
 
 const FooterText = styled.h6`
-margin: 0;
+margin: 1px;
 `;
 
 const Footer = () => {
@@ -20,9 +19,9 @@ const Footer = () => {
 
   return ( 
     <Wrapper>
-      <FooterText>© {year}</FooterText>
-      <FooterText>Powered By GIPHY</FooterText>
-      <FooterText>All Rights Reserved ™</FooterText>
+      <FooterText>©{year}</FooterText>
+      <FooterText>Powered By GIPHY™</FooterText>
+      <FooterText>All Rights Reserved</FooterText>
     </Wrapper>
    );
 }
