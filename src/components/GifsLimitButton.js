@@ -11,15 +11,22 @@ const LimitButtonWrapper = styled.div`
 
 const LimitButtonText = styled.a`
   display: inline-block;
-  width: 4vw;
-  height: 4vw;
-  background: salmon;
+  width: 4rem;
+  height: 4rem;
+  background: #e6fa8072;
   border-radius: 50%;
-  line-height: 4vw;
+  line-height: 4rem;
   text-align: center;
   box-shadow: 0px 0px 7px 0px rgb(82, 82, 82);
   cursor: pointer;
   user-select: none;
+  transition: 0.4s;
+
+  &:hover {
+    background: #fa8072;
+    transform: scale(1.02);
+    box-shadow: 0px 0px 13px 0px rgb(95, 95, 95);
+  }
 `;
 
 const GifsLimitButton = (props) => {
