@@ -2,7 +2,7 @@
   "name": "gifer",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://m1chu82pl.github.io/voxgifer/",
+  "homepage": "https://m1chu82pl.github.io/voxGifer/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.10",
     "@testing-library/react": "^11.2.6",
