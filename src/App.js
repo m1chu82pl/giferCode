@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import EventPlace from "./components/EventPlace";
 import Footer from "./components/Footer";
+import GifsLimitButton from "./components/GifsLimitButton";
 import Header from "./components/Header";
 import Searcher from "./components/Searcher";
 
@@ -41,6 +42,10 @@ function App() {
     searchInput.current.focus()
   };
 
+  const handleChangeGifsLimit = () => {
+    setLimit(limit < 15 ? limit + 5 : 5)
+  }
+
   useEffect(() => {
     const fetchData = () => {
       fetch(url)
@@ -61,7 +66,7 @@ function App() {
 
     const searchTimer = setTimeout(() => {
       fetchData();
-    }, 1000);
+    }, 500);
 
     return () => clearTimeout(searchTimer);
   }, [url]);
@@ -77,6 +82,7 @@ function App() {
       />
       <EventPlace gifsData={gifsData} />
       <Footer />
+      <GifsLimitButton limit={limit} handleChangeGifsLimit={handleChangeGifsLimit}/>
     </Wrapper>
   );
 }

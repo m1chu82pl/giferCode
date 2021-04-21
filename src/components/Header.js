@@ -10,8 +10,8 @@ const animateTitle = keyframes`
 const Title = styled.h1`
 position: relative;
 padding: 5px 0;
-background: salmon;
 text-align: center;
+background: salmon;
 animation: ${animateTitle} ease-out 1.5s;
 `
 

@@ -1,36 +1,4 @@
-import styled from "styled-components";
-
-const Wrapper = styled.div`
-position: relative;
-margin: 0 1vw 0;
-`;
-
-const Form = styled.form`
-text-align: center;
-margin: 10px;
-`;
-
-const Input = styled.input`
-outline: 0;
-  border-width: 0 0 6px;
-  border-color: red;
-
-  ::placeholder {
-    text-align: center;
-  }
-
-  &:focus {
-    border-width: 0 0 3px;
-  border-color: salmon;
-}
-`;
-
-const Button = styled.button`
-margin: 0 10px;
-padding: 0 5px;
-border: none;
-cursor: pointer;
-`;
+import { Wrapper, Form, Input, Button } from "./Searcher.styled";
 
 const Searcher = (props) => {  
 
