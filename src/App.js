@@ -21,7 +21,7 @@ function App() {
 
   const [limit, setLimit] = useState(10);
   const [url, setUrl] = useState(
-    `http://api.giphy.com/v1/gifs/search?q=&api_key=${API}&limit=${limit}`);
+    `https://api.giphy.com/v1/gifs/search?q=&api_key=${API}&limit=${limit}`);
   const [gifsData, setGifsData] = useState([]);
   const [inputText, setInputText] = useState("");
 
@@ -29,14 +29,14 @@ function App() {
 
   const handleChangeInputValue = (event) => {
     setUrl(
-      `http://api.giphy.com/v1/gifs/search?q=${event.target.value}&api_key=${API}&limit=${limit}`);
+      `https://api.giphy.com/v1/gifs/search?q=${event.target.value}&api_key=${API}&limit=${limit}`);
     setInputText(event.target.value);
   };
 
   const handleClearInputValue = (event) => {
     event.preventDefault();
     setUrl(
-      `http://api.giphy.com/v1/gifs/search?q=&api_key=${API}&limit=${limit}`
+      `https://api.giphy.com/v1/gifs/search?q=&api_key=${API}&limit=${limit}`
     );
     setInputText("");
     searchInput.current.focus()
